@@ -6,7 +6,7 @@ Post
 {% endblock title %}
 
 {% block content %}
-    <h1>Количество новостей {{news|length}} </h1>
+    <h1>Количество публикаций: {{ posts|length }} </h1>
     <h1>Список новостей</h1>
         {% if posts %}
         <table>
