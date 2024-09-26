@@ -1,15 +1,15 @@
 {% extends 'flatpages/default.html' %}
 
+{% load custom_filters %}
 
 {% block title %}
-PostSearch
+    Поиск публикаций
 {% endblock title %}
 
 {% block content %}
     <h1>Количество публикаций: {{ posts|length }} </h1>
     <h1>Список новостей</h1>
     <form action="" method="get">
-       {# Переменная, которую мы передали через контекст, может сгенерировать нам форму с полями #}
        {{ filterset.form.as_p }}
        <input type="submit" value="Найти" />
     </form>
