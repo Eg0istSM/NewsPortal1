@@ -1,7 +1,8 @@
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post
 from .filters import PostFilter
 from .forms import PostForm
+from django.urls import reverse_lazy
 
 
 class PostsList(ListView):
@@ -37,9 +38,21 @@ class PostCreate(CreateView):
     model = Post
     template_name = 'flatpages/post_create.html'
 
-    def firm_valid(self, form):
+    def form_valid(self, form):
         post = form.save(commit=False)
         if self.request.path == '/post/articles/create/':
             post.type = 'AR'
         post.save()
         return super().form_valid(form)
+
+
+class PostUpdate(UpdateView):
+    form_class = PostForm
+    model = Post
+    template_name = 'flatpages/post_create.html'
+
+
+class PostDelete(DeleteView):
+    model = Post
+    template_name = 'flatpages/post_delete.html'
+    success_url = reverse_lazy('post_list')
