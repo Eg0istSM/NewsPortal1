@@ -37,7 +37,7 @@ class Post(models.Model):
         (news, 'Новость')
     ]
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
-    type = models.CharField(max_length=2, choices=POSITIONS, default=news)
+    post_type = models.CharField(max_length=2, choices=POSITIONS, default=news)
     time_post = models.DateTimeField(auto_now_add=True)
     category = models.ManyToManyField(Category, through='PostCategory')
     title = models.CharField(max_length=255)
