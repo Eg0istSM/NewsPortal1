@@ -54,3 +54,4 @@
 >>>best_post.preview()
 11.Вывести все комментарии (дата, пользователь, рейтинг, текст) к этой статье.
 >>>Comment.objects.filter(post=best_post).values('time_comm','user','rating','text')
+env не видит
