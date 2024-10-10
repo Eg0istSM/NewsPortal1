@@ -8,7 +8,7 @@ from django.core.management.base import BaseCommand
 from django.template.loader import render_to_string
 from django_apscheduler.jobstores import DjangoJobStore
 from django_apscheduler.models import DjangoJobExecution
-
+from django.utils import timezone
 from news.models import Post, Category
 
 logger = logging.getLogger(__name__)
@@ -16,11 +16,11 @@ logger = logging.getLogger(__name__)
 
 # наша задача по выводу текста на экран
 def my_job():
-    today = datetime.datetime.now()
+    today = timezone.now()
     last_week = today - datetime.timedelta(days=7)
     posts = Post.objects.filter(time_post__gte=last_week)
     categories = set(posts.values_list('category__name', flat=True))
-    subscribers = set(Category.objects.filter(name__in=categories).values_list('subscribers__email'))
+    subscribers = set(Category.objects.filter(name__in=categories).values_list('subscribers__email', flat=True))
 
     html_content = render_to_string(
         'flatpages/daily_post.html',
@@ -58,7 +58,7 @@ class Command(BaseCommand):
         # добавляем работу нашему задачнику
         scheduler.add_job(
             my_job,
-            trigger=CronTrigger(day_of_week="thu", hour="13", minute="11"),
+            trigger=CronTrigger(day_of_week="thu", hour="16", minute="34"),
             # То же, что и интервал, но задача тригера таким образом более понятна django
             id="my_job",  # уникальный айди
             max_instances=1,
