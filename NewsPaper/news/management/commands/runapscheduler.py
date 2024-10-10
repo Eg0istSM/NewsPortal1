@@ -9,7 +9,7 @@ from django.template.loader import render_to_string
 from django_apscheduler.jobstores import DjangoJobStore
 from django_apscheduler.models import DjangoJobExecution
 
-from NewsPaper.news.models import Post, Category
+from news.models import Post, Category
 
 logger = logging.getLogger(__name__)
 
@@ -58,7 +58,7 @@ class Command(BaseCommand):
         # добавляем работу нашему задачнику
         scheduler.add_job(
             my_job,
-            trigger=CronTrigger(day_of_week="wed", hour="16", minute="33"),
+            trigger=CronTrigger(day_of_week="thu", hour="13", minute="11"),
             # То же, что и интервал, но задача тригера таким образом более понятна django
             id="my_job",  # уникальный айди
             max_instances=1,
