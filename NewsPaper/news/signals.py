@@ -8,6 +8,7 @@ from .models import PostCategory, Post
 from django.conf import settings
 import datetime
 
+
 def send_notifications(preview, pk, title, subscribers):
     for subscriber in subscribers:
         html_content = render_to_string(
