@@ -62,3 +62,5 @@ def week_send_email_task():
 
     msg.attach_alternative(html_content, 'text/html')
     msg.send()
+
+
