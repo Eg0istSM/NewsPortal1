@@ -7,11 +7,35 @@ from django.conf import settings
 
 
 @shared_task
-def send_email_task(pk):
+def send_email_task(pk, preview):
     post = Post.objects.get(pk=pk)
     categories = post.category.all()
     title = post.title
-    subscribers_email = []
+    subscribers_emails = []
+
+    for categ in categories:
+        subscribers_users = categ.subscribers.all()
+        for sub_users in subscribers_users:
+            subscribers_emails.append(sub_users.email)
+
+    html_content = render_to_string(
+        'post_created_email_task.html',
+        {
+            'text': preview,
+            'link': f'{settings.SITE_URL}/post/{pk}',
+        }
+    )
+
+    msg = EmailMultiAlternatives(
+        subject=title,
+        body='',
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        to=[subscribers_emails],
+
+    )
+
+    msg.attach_alternative(html_content, 'text/html')
+    msg.send()
 
 
 @shared_task
