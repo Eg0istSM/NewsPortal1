@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from .models import Post
 from datetime import date
 
+
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post

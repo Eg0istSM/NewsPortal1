@@ -3,6 +3,7 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/NewsPaper" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/NewsPaper/cache_files" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.12 (NewsPortal1)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

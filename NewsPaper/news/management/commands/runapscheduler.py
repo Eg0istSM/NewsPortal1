@@ -37,7 +37,7 @@ def my_job():
         to=subscribers,
     )
 
-    msg.attach_alternative(html_content,'text/html')
+    msg.attach_alternative(html_content, 'text/html')
     msg.send()
 
 
