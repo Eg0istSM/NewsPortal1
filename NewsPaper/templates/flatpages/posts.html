@@ -24,11 +24,11 @@ Post
                 <td>{{ post.time_post|date:'d M Y' }}</td>
                 <td>{{ post.text|truncatechars:20 }}</td>
                 <td>
-                    {% if post.author == user %}
+                    {% if post.author.user == user %}
                     <a href="{% url 'news_update' post.id %}">Изменить</a>
                     {% endif %}
 
-                    {% if post.author == user %}
+                    {% if post.author.user == user %}
                     <a href="{% url 'news_delete' post.id %}">Удалить</a>
                     {% endif %}
                 </td>
