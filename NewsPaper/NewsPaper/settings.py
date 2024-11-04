@@ -152,7 +152,7 @@ ACCOUNT_FORMS = {'signup': 'sign.forms.CommonSignupForm'}
 
 SITE_URL = 'http://127.0.0.1:8000'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')

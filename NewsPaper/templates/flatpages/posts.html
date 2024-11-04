@@ -15,6 +15,7 @@ Post
                 <td>Название</td>
                 <td>Дата публикации</td>
                 <td>Текст</td>
+                <td>Действие</td>
             </tr>
 
             {% for post in posts %}
@@ -22,6 +23,15 @@ Post
                 <td><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></td>
                 <td>{{ post.time_post|date:'d M Y' }}</td>
                 <td>{{ post.text|truncatechars:20 }}</td>
+                <td>
+                    {% if post.author == user %}
+                    <a href="{% url 'news_update' post.id %}">Изменить</a>
+                    {% endif %}
+
+                    {% if post.author == user %}
+                    <a href="{% url 'news_delete' post.id %}">Удалить</a>
+                    {% endif %}
+                </td>
             </tr>
             {% endfor %}
 
