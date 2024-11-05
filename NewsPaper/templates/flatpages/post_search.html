@@ -22,6 +22,7 @@
                 <td>Дата публикации</td>
                 <td>Текст</td>
                 <td>Категории</td>
+                <td>Действие</td>
             </tr>
 
             {% for post in posts %}
@@ -32,6 +33,15 @@
                 <td>{% for category in post.category.all %}
                         <a href="{% url 'category_list' category.id %}">{{ category }}</a>
                     {% endfor %}
+                </td>
+                <td>
+                    {% if post.author.user == user %}
+                    <a href="{% url 'news_update' post.id %}">Изменить</a>
+                    {% endif %}
+
+                    {% if post.author.user == user %}
+                    <a href="{% url 'news_delete' post.id %}">Удалить</a>
+                    {% endif %}
                 </td>
             </tr>
             {% endfor %}
