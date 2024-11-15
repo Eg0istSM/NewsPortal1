@@ -13,11 +13,17 @@ Post
                <td>Название</td>
                <td>Текст</td>
                <td>Дата публикации</td>
+               <td>Реакция</td>
+               <td>Рейтинг</td>
             </tr>
             <tr>
                <td>{{ post.title }}</td>
                <td>{{ post.text|censor }}</td>
                <td>{{ post.time_post|date:'d M Y' }}</td>
+               <td><a class="btn btn-secondary btn-sm" href="{% url 'like' post.pk %}">Like👍</a>
+                   <a class="btn btn-secondary btn-sm" href="{% url 'dislike' post.pk %}">Dislike👎</a>
+               </td>
+               <td>{{ post.rating }}</td>
             </tr>
         </table>
 {% endblock content %}

@@ -90,5 +90,16 @@ def subscribe(request, pk):
     return render(request, 'flatpages/subscribe.html', {'category': category, 'message': message})
 
 
+def like(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.like()
+    post.save()
+    return render(request, 'flatpages/post.html', {'post': post})
 
+
+def dislike(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.dislike()
+    post.save()
+    return render(request, 'flatpages/post.html', {'post': post})
 

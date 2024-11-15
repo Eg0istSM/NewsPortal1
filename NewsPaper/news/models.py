@@ -50,7 +50,7 @@ class Post(models.Model):
         self.rating += 1
         self.save()
 
-    def deslike(self):
+    def dislike(self):
         self.rating -= 1
         self.save()
 
