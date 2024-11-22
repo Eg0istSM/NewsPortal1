@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
-from .models import Post
+from .models import Post, Comment
 from datetime import date
 
 
@@ -23,3 +23,10 @@ class PostForm(forms.ModelForm):
         if post_limit >= 3:
             raise ValidationError('Нельзя публиковать более трех постов в сутки!')
         return cleaned_data
+
+
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Comment
+        fields = ['text']

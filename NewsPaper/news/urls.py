@@ -16,4 +16,5 @@ urlpatterns = [
    path('categories/<int:pk>/subscribe', subscribe, name='subscribe'),
    path('<int:pk>/like/', like, name='like'),
    path('<int:pk>/dislike/', dislike, name='dislike'),
+   path('<int:pk>/comment/', PostComment.as_view(), name='post_comment'),
 ]

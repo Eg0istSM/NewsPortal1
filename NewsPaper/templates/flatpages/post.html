@@ -15,6 +15,7 @@ Post
                <td>Дата публикации</td>
                <td>Реакция</td>
                <td>Рейтинг</td>
+               <td>Действие</td>
             </tr>
             <tr>
                <td>{{ post.title }}</td>
@@ -24,6 +25,14 @@ Post
                    <a class="btn btn-secondary btn-sm" href="{% url 'dislike' post.pk %}">Dislike👎</a>
                </td>
                <td>{{ post.rating }}</td>
+               <td><button><a href="{% url 'post_comment' post.id %}">Оставить коментарий</a></button></td>
+
             </tr>
         </table>
+        <h3>Комментарии:</h3>
+        {% for comment in post.comment_set.all %}
+        <p>{{ comment.user }}</p>
+        <p>{{ comment.text }}</p>
+        {% endfor %}
+
 {% endblock content %}

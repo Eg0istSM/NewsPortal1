@@ -1,7 +1,7 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post, Category
+from .models import Post, Category, Comment
 from .filters import PostFilter
-from .forms import PostForm
+from .forms import PostForm, CommentForm
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.shortcuts import get_object_or_404, render
@@ -103,3 +103,18 @@ def dislike(request, pk):
     post.save()
     return render(request, 'flatpages/post.html', {'post': post})
 
+
+class PostComment(PermissionRequiredMixin, CreateView):
+    form_class = CommentForm
+    model = Comment
+    template_name = 'flatpages/comment.html'
+
+    def form_valid(self, form):
+        comment = form.save(commit=False)
+        comment.user = self.request.user
+        comment.post = Post.objects.get(pk=self.kwargs['pk'])
+        comment.save()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('post_detail', kwargs={'pk': self.kwargs['pk']})
