@@ -108,6 +108,8 @@ class PostComment(PermissionRequiredMixin, CreateView):
     form_class = CommentForm
     model = Comment
     template_name = 'flatpages/comment.html'
+    permission_required = ('news.add_post',)
+    success_url = reverse_lazy('post_detail')
 
     def form_valid(self, form):
         comment = form.save(commit=False)
