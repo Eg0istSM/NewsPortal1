@@ -1,10 +1,12 @@
 
 from pathlib import Path
 import os
-
+import logging
 from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv())
+
+logger = logging.getLogger('django')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -185,3 +187,133 @@ CELERY_RESULT_SERIALIZER = 'json'
 #         'LOCATION': os.path.join(BASE_DIR, 'cache_files'), # Указываем, куда будем сохранять кэшируемые файлы! Не забываем создать папку cache_files внутри папки с manage.py!
 #     }
 # }
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'style': '{',
+    'formatters': {
+        'simple': {
+            'format': '%(asctime)s %(levelname)s %(message)s',
+            'datefmt': "%d.%m.%Y %H-%M-%S"
+        },
+        'simple_warning': {
+            'format': '%(asctime)s %(levelname)s %(message)s %(pathname)s'
+        },
+        'simple_error': {
+            'format': '%(asctime)s %(levelname)s %(message)s %(exc_info)s'
+        },
+        'general': {
+            'format': '%(asctime)s %(levelname)s %(module)s %(message)s',
+            'datefmt': "%d.%m.%Y %H-%M-%S"
+        },
+        'errors': {
+            'format': '%(asctime)s %(levelname)s %(pathname)s %(message)s %(exc_info)s',
+            'datefmt': "%d.%m.%Y %H-%M-%S"
+        },
+        'email': {
+            'format': '%(asctime)s %(levelname)s %(message)s %(pathname)s',
+            'datefmt': "%d.%m.%Y %H-%M-%S"
+        },
+        'security': {
+            'format': '%(asctime)s %(levelname)s %(module)s %(message)s',
+            'datefmt': "%d.%m.%Y %H-%M-%S"
+        },
+
+    },
+
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+
+    },
+
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'console_warning': {
+            'level': 'WARNING',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple_warning'
+        },
+
+        'console_error': {
+            'level': 'ERROR',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple_error'
+        },
+
+        'general': {
+            'level': 'INFO',
+            'filters': ['require_debug_false'],
+            'class': 'logging.FileHandler',
+            'filename': 'logs/general.log',
+            'formatter': 'general',
+        },
+
+        'errors': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': 'logs/errors.log',
+            'formatter': 'errors',
+        },
+
+        'security': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': 'logs/security.log',
+            'formatter': 'security',
+        },
+
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+            'formatter': 'email',
+        },
+
+    },
+
+    'loggers': {
+        'django': {
+            'handler': ['console', 'console_warning', 'console_error', 'general'],
+            'propagate': True,
+        },
+        'django.request': {
+            'handler': ['errors', 'mail_admins'],
+            'propagate': True,
+        },
+        'django.server': {
+            'handler': ['errors', 'mail_admins'],
+            'propagate': True,
+        },
+        'django.template': {
+            'handler': ['errors'],
+            'propagate': True,
+        },
+        'django.db_backends': {
+            'handler': ['errors'],
+            'propagate': True,
+        },
+        'django.security': {
+            'handler': ['security'],
+            'propagate': True,
+        },
+
+    },
+}
+
+
+
+
+
+

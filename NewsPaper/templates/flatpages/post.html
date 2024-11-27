@@ -31,8 +31,8 @@ Post
         </table>
         <h3>Комментарии:</h3>
         {% for comment in post.comment_set.all %}
-        <p>{{ comment.user }}</p>
-        <p>{{ comment.text }}</p>
+        <p>Автор комментария: {{ comment.user }}</p>
+        <p>Текст комментария: {{ comment.text }}</p>
         {% endfor %}
 
 {% endblock content %}
