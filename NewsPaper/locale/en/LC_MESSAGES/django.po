@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-01 13:09+0300\n"
+"POT-Creation-Date: 2024-12-01 14:20+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,27 +22,31 @@ msgstr ""
 #: .\templates\flatpages\post.html:12 .\templates\flatpages\post_search.html:21
 #: .\templates\flatpages\posts.html:15
 msgid "Название"
-msgstr "Name news "
+msgstr "Name post"
 
 #: .\news\filters.py:10
-msgid "Все авторы "
-msgstr "All author "
+msgid "Все авторы"
+msgstr "All author"
 
 #: .\news\filters.py:10
-msgid "Автор "
-msgstr "Author "
+msgid "Автор"
+msgstr "Author"
 
 #: .\news\filters.py:12
-msgid "Дата после "
-msgstr "Date after "
+msgid "Дата после"
+msgstr "Date after"
 
 #: .\news\filters.py:13
-msgid "Все категории "
-msgstr "All category "
+#, fuzzy
+#| msgid "Категории"
+msgid "Все категории"
+msgstr "Categorys"
 
 #: .\news\filters.py:13 .\templates\flatpages\category_list.html:25
-msgid "Категория "
-msgstr "Category "
+#, fuzzy
+#| msgid "Категории"
+msgid "Категория"
+msgstr "Category"
 
 #: .\news\forms.py:24
 msgid "Нельзя публиковать более трех постов в сутки!"
