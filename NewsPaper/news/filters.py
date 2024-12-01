@@ -1,7 +1,7 @@
 import django_filters
 from .models import Post, Author, Category
 from django import forms
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 
 
 # фильтр для страницы поиска постов

@@ -43,8 +43,6 @@ msgid "Все категории"
 msgstr "Categorys"
 
 #: .\news\filters.py:13 .\templates\flatpages\category_list.html:25
-#, fuzzy
-#| msgid "Категории"
 msgid "Категория"
 msgstr "Category"
 
