@@ -22,27 +22,27 @@ msgstr ""
 #: .\templates\flatpages\post.html:12 .\templates\flatpages\post_search.html:21
 #: .\templates\flatpages\posts.html:15
 msgid "Название"
-msgstr "Name news"
+msgstr "Name news "
 
 #: .\news\filters.py:10
-msgid "Все авторы"
-msgstr "All author"
+msgid "Все авторы "
+msgstr "All author "
 
 #: .\news\filters.py:10
-msgid "Автор"
-msgstr "Author"
+msgid "Автор "
+msgstr "Author "
 
 #: .\news\filters.py:12
-msgid "Дата после"
-msgstr "Date after"
+msgid "Дата после "
+msgstr "Date after "
 
 #: .\news\filters.py:13
-msgid "Все категории"
-msgstr "All category"
+msgid "Все категории "
+msgstr "All category "
 
 #: .\news\filters.py:13 .\templates\flatpages\category_list.html:25
-msgid "Категория"
-msgstr "Category"
+msgid "Категория "
+msgstr "Category "
 
 #: .\news\forms.py:24
 msgid "Нельзя публиковать более трех постов в сутки!"
@@ -96,14 +96,12 @@ msgid "Новостной Портал!"
 msgstr "News Portal"
 
 #: .\templates\flatpages\default.html:48
-#, fuzzy
-#| msgid "Список новостей"
 msgid "Свежие новости 📰"
-msgstr "News List"
+msgstr "News List 📰"
 
 #: .\templates\flatpages\default.html:51
 msgid "Поиск 🔍"
-msgstr "Search"
+msgstr "Search 🔍"
 
 #: .\templates\flatpages\post.html:15
 msgid "Реакция"
@@ -131,8 +129,6 @@ msgid "Удаляем"
 msgstr "Delete"
 
 #: .\templates\flatpages\post_search.html:24
-#, fuzzy
-#| msgid "Категория"
 msgid "Категории"
 msgstr "Categorys"
 
