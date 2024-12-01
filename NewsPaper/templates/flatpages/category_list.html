@@ -1,5 +1,5 @@
 {% extends 'flatpages/default.html' %}
-
+{% load i18n %}
 {% load custom_filters %}
 
 {% block title %}
@@ -10,8 +10,8 @@
     {% if is_not_subscriber %}
         <p class="text-center"><a href="{%url 'subscribe' category.id %}" class="btn btn-secondary btn-sm">Подписаться</a></p>
     {% endif %}
-<h1>Количество публикаций: {{ posts|length }} </h1>
-    <h1>Список новостей</h1>
+<h1>{% trans "Количество публикаций" %}: {{ posts|length }} </h1>
+    <h1>{% trans "Список новостей" %}</h1>
     <form action="" method="get">
        {{ filterset.form.as_p }}
        <input type="submit" value="Найти" />
@@ -21,10 +21,10 @@
     {% if category_post_list %}
         <table>
             <tr>
-                <td>Название</td>
-                <td>Категория</td>
-                <td>Дата публикации</td>
-                <td>Текст</td>
+                <td>{% trans "Название" %}</td>
+                <td>{% trans "Категория" %}</td>
+                <td>{% trans "Дата публикации" %}</td>
+                <td>{% trans "Текст" %}</td>
             </tr>
 
             {% for post in category_post_list %}
@@ -41,7 +41,7 @@
 
         </table>
     {% else %}
-        <h2>Новостей нет! =( </h2>
+        <h2>{% trans "Новостей нет! =("%} </h2>
     {% endif %}
     {% if page_obj.has_previous %}
         <a href="?page=1">1</a>

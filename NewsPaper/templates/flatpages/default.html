@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load i18n %}
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -14,7 +15,22 @@
 <!-- Responsive navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
    <div class="container">
-       <a class="navbar-brand" href="#">Новостной Портал!</a>
+       <form action="{% url 'set_language' %}" method="POST"> {% csrf_token %} <!-- Не забываем по csrf_token для POST запросов -->
+        <input type="hidden" name="next" value="{{ redirect_to }}">
+
+        <select name="language" id="">
+            {% get_available_languages as LANGUAGES %} <!-- получаем языки -->
+            {% get_language_info_list for LANGUAGES as languages %} <!-- Помещаем их в список languages -->
+            {% get_current_language as LANGUAGE_CODE %}
+            {% for language in languages %} <!-- Итерируясь по списку, выводим их название на языке пользователя и код -->
+                <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected {% endif %}>
+                    {{ language.name_local }} - {{ language.code }}
+                </option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="set">
+        </form>
+       <a class="navbar-brand" href="#">{% trans "Новостной Портал!"%}</a>
        <button class="navbar-toggler" type="button" data-toggle="collapse"
                data-target="#navbarResponsive"
                aria-controls="navbarResponsive" aria-expanded="false"
@@ -29,10 +45,10 @@
 <!--                   </a>-->
 <!--               </li>-->
                <li class="nav-item">
-                   <a class="nav-link" href="/post/">Свежие новости 📰</a>
+                   <a class="nav-link" href="/post/">{% trans "Свежие новости 📰" %}</a>
                </li>
                <li class="nav-item">
-                   <a class="nav-link" href="/post/search/">Поиск 🔍</a>
+                   <a class="nav-link" href="/post/search/">{% trans "Поиск 🔍" %}</a>
                </li>
            </ul>
        </div>

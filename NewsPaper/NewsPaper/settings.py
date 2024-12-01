@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -126,7 +127,7 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
-USE_I18N = True
+USE_I18N = True  # вкл и выкл интернационализации
 
 USE_TZ = True
 
@@ -187,6 +188,7 @@ CELERY_RESULT_SERIALIZER = 'json'
 #         'LOCATION': os.path.join(BASE_DIR, 'cache_files'), # Указываем, куда будем сохранять кэшируемые файлы! Не забываем создать папку cache_files внутри папки с manage.py!
 #     }
 # }
+
 
 LOGGING = {
     'version': 1,
@@ -312,8 +314,12 @@ LOGGING = {
     },
 }
 
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale')
+]
 
-
-
-
+LANGUAGES = [
+    ('en-us', 'English'),
+    ('ru', 'Русский'),
+]
 

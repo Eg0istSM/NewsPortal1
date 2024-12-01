@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.decorators import login_required
+from django.utils.translation import gettext as _
 
 
 class PostsList(ListView):
@@ -86,7 +87,7 @@ def subscribe(request, pk):
     category = Category.objects.get(id=pk)
     category.subscribers.add(user)
 
-    message = 'Вы успешно подписались на рассылку'
+    message = _('Вы успешно подписались на рассылку')
     return render(request, 'flatpages/subscribe.html', {'category': category, 'message': message})
 
 
@@ -119,3 +120,4 @@ class PostComment(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return reverse_lazy('post_detail', kwargs={'pk': self.kwargs['pk']})
+

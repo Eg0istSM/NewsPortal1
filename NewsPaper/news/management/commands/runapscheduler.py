@@ -14,7 +14,7 @@ from news.models import Post, Category
 logger = logging.getLogger(__name__)
 
 
-# наша задача по выводу текста на экран
+# команда для еженедельно рассылки
 def my_job():
     today = timezone.now()
     last_week = today - datetime.timedelta(days=7)

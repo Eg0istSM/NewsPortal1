@@ -1,7 +1,6 @@
-
 {% extends 'flatpages/default.html' %}
 {% load custom_filters %}
-
+{% load i18n %}
 {% block title %}
 Post
 {% endblock title %}
@@ -10,12 +9,12 @@ Post
     <h1>{{ post.title }}</h1>
         <table>
             <tr>
-               <td>Название</td>
-               <td>Текст</td>
-               <td>Дата публикации</td>
-               <td>Реакция</td>
-               <td>Рейтинг</td>
-               <td>Действие</td>
+               <td>{% trans "Название" %}</td>
+               <td>{% trans "Текст" %}</td>
+               <td>{% trans "Дата публикации" %}</td>
+               <td>{% trans "Реакция" %}</td>
+               <td>{% trans "Рейтинг" %}</td>
+               <td>{% trans "Действие" %}</td>
             </tr>
             <tr>
                <td>{{ post.title }}</td>
@@ -31,8 +30,8 @@ Post
         </table>
         <h3>Комментарии:</h3>
         {% for comment in post.comment_set.all %}
-        <p>Автор комментария: {{ comment.user }}</p>
-        <p>Текст комментария: {{ comment.text }}</p>
+        <p>{% trans "Автор комментария" %}: {{ comment.user }}</p>
+        <p>{% trans "Текст комментария" %}: {{ comment.text }}</p>
         {% endfor %}
 
 {% endblock content %}

@@ -1,0 +1,151 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-01 13:09+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\news\filters.py:9 .\templates\flatpages\category_list.html:24
+#: .\templates\flatpages\post.html:12 .\templates\flatpages\post_search.html:21
+#: .\templates\flatpages\posts.html:15
+msgid "Название"
+msgstr "Name news"
+
+#: .\news\filters.py:10
+msgid "Все авторы"
+msgstr "All author"
+
+#: .\news\filters.py:10
+msgid "Автор"
+msgstr "Author"
+
+#: .\news\filters.py:12
+msgid "Дата после"
+msgstr "Date after"
+
+#: .\news\filters.py:13
+msgid "Все категории"
+msgstr "All category"
+
+#: .\news\filters.py:13 .\templates\flatpages\category_list.html:25
+msgid "Категория"
+msgstr "Category"
+
+#: .\news\forms.py:24
+msgid "Нельзя публиковать более трех постов в сутки!"
+msgstr "You can't post more than three posts a day!"
+
+#: .\news\views.py:90
+msgid "Вы успешно подписались на рассылку"
+msgstr "You have successfully subscribed to the newsletter"
+
+#: .\templates\flatpages\category_list.html:13
+#: .\templates\flatpages\post_search.html:10
+#: .\templates\flatpages\posts.html:10
+msgid "Количество публикаций"
+msgstr "Number of publications"
+
+#: .\templates\flatpages\category_list.html:14
+#: .\templates\flatpages\post_search.html:11
+#: .\templates\flatpages\posts.html:11
+msgid "Список новостей"
+msgstr "News List"
+
+#: .\templates\flatpages\category_list.html:26
+#: .\templates\flatpages\post.html:14 .\templates\flatpages\post_search.html:22
+#: .\templates\flatpages\posts.html:16
+msgid "Дата публикации"
+msgstr "Date of publication"
+
+#: .\templates\flatpages\category_list.html:27
+#: .\templates\flatpages\post.html:13 .\templates\flatpages\post_search.html:23
+#: .\templates\flatpages\posts.html:17
+msgid "Текст"
+msgstr "Text"
+
+#: .\templates\flatpages\category_list.html:44
+#: .\templates\flatpages\posts.html:40
+#, fuzzy
+#| msgid "Новостной Портал!"
+msgid "Новостей нет! =("
+msgstr " No news"
+
+#: .\templates\flatpages\daily_post.html:6
+msgid "Уведомление"
+msgstr "Notification"
+
+#: .\templates\flatpages\daily_post.html:9
+msgid "Здравствуйте! Новые статьи за последнюю неделю"
+msgstr "Hello! New articles from the last week"
+
+#: .\templates\flatpages\default.html:33
+msgid "Новостной Портал!"
+msgstr "News Portal"
+
+#: .\templates\flatpages\default.html:48
+#, fuzzy
+#| msgid "Список новостей"
+msgid "Свежие новости 📰"
+msgstr "News List"
+
+#: .\templates\flatpages\default.html:51
+msgid "Поиск 🔍"
+msgstr "Search"
+
+#: .\templates\flatpages\post.html:15
+msgid "Реакция"
+msgstr "Reaction"
+
+#: .\templates\flatpages\post.html:16
+msgid "Рейтинг"
+msgstr "Rating"
+
+#: .\templates\flatpages\post.html:17 .\templates\flatpages\post_search.html:25
+#: .\templates\flatpages\posts.html:18
+msgid "Действие"
+msgstr "Action"
+
+#: .\templates\flatpages\post.html:33
+msgid "Автор комментария"
+msgstr "Author comment"
+
+#: .\templates\flatpages\post.html:34
+msgid "Текст комментария"
+msgstr "Text comment"
+
+#: .\templates\flatpages\post_delete.html:8
+msgid "Удаляем"
+msgstr "Delete"
+
+#: .\templates\flatpages\post_search.html:24
+#, fuzzy
+#| msgid "Категория"
+msgid "Категории"
+msgstr "Categorys"
+
+#: .\templates\flatpages\post_search.html:51
+#, fuzzy
+#| msgid "Новостной Портал!"
+msgid "Новостей нет! "
+msgstr " No news"
+
+#: .\templates\flatpages\posts.html:28
+msgid "Изменить"
+msgstr "Changes"
+
+#: .\templates\flatpages\posts.html:32
+msgid "Удалить"
+msgstr "Delete"

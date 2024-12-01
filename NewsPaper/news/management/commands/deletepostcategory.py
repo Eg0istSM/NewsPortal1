@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand, CommandError
 from news.models import Post ,Category
 
 
+# команда удаления постов по категории
 class Command(BaseCommand):
     help = 'Удаление новостей из выбранной категории'
 

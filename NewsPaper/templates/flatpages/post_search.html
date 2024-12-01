@@ -1,5 +1,5 @@
 {% extends 'flatpages/default.html' %}
-
+{% load i18n %}
 {% load custom_filters %}
 
 {% block title %}
@@ -7,8 +7,8 @@
 {% endblock title %}
 
 {% block content %}
-    <h1>Количество публикаций: {{ posts|length }} </h1>
-    <h1>Список новостей</h1>
+    <h1>{% trans "Количество публикаций" %}: {{ posts|length }} </h1>
+    <h1>{% trans "Список новостей" %}</h1>
     <form action="" method="get">
        {{ filterset.form.as_p }}
        <input type="submit" value="Найти" />
@@ -18,11 +18,11 @@
     {% if posts %}
         <table>
             <tr>
-                <td>Название</td>
-                <td>Дата публикации</td>
-                <td>Текст</td>
-                <td>Категории</td>
-                <td>Действие</td>
+                <td>{% trans "Название" %}</td>
+                <td>{% trans "Дата публикации" %}</td>
+                <td>{% trans "Текст" %}</td>
+                <td>{% trans "Категории" %}</td>
+                <td>{% trans "Действие" %}</td>
             </tr>
 
             {% for post in posts %}
@@ -48,7 +48,7 @@
 
         </table>
     {% else %}
-        <h2>Новостей нет! =( </h2>
+        <h2> {% trans "Новостей нет! "%} =( </h2>
     {% endif %}
     {% if page_obj.has_previous %}
         <a href="?page=1">1</a>
