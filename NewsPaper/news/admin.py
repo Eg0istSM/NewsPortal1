@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Category, Post
-from modeltranslation.admin import TranslationAdmin # импортируем модель админки (вспоминаем модуль про переопределение стандартных админ-инструментов)
+from modeltranslation.admin import TranslationAdmin  # импортируем модель админки (вспоминаем модуль про переопределение стандартных админ-инструментов)
 
 
 # удобный вывод в админке
