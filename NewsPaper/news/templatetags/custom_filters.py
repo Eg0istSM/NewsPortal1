@@ -4,6 +4,7 @@ register = template.Library()
 
 censor_list = ['бла', 'буль']
 
+
 # фильтр цензуры с заменой на звездочки
 @register.filter()
 def censor(value):
