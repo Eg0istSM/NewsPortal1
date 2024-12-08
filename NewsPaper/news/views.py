@@ -1,6 +1,5 @@
 import pytz
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post, Category, Comment
 from .filters import PostFilter
 from .forms import PostForm, CommentForm
 from django.urls import reverse_lazy
@@ -9,6 +8,10 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import gettext as _
 from django.utils import timezone
+from rest_framework import viewsets
+from rest_framework import permissions
+from .serializers import *
+from .models import *
 
 
 class PostsList(ListView):
@@ -128,4 +131,24 @@ class PostComment(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return reverse_lazy('post_detail', kwargs={'pk': self.kwargs['pk']})
+
+
+class CategoryViewset(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+
+class PostNewsViewest(viewsets.ModelViewSet):
+    queryset = Post.objects.filter(post_type='NE')
+    serializer_class = PostSerializer
+
+
+class PostArticleViewset(viewsets.ModelViewSet):
+    queryset = Post.objects.filter(post_type='AR')
+    serializer_class = PostSerializer
+
+
+class CommentViewset(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
 

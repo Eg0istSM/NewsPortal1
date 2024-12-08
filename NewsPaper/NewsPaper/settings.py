@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'sign',
     'protect',
     'django_apscheduler',
+    'rest_framework',
 ]
 
 SITE_ID = 1
