@@ -1,5 +1,7 @@
 import pytz
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from rest_framework.response import Response
+
 from .filters import PostFilter
 from .forms import PostForm, CommentForm
 from django.urls import reverse_lazy
@@ -8,7 +10,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import gettext as _
 from django.utils import timezone
-from rest_framework import viewsets
+from rest_framework import viewsets, status
 from rest_framework import permissions
 from .serializers import *
 from .models import *
@@ -133,22 +135,22 @@ class PostComment(LoginRequiredMixin, CreateView):
         return reverse_lazy('post_detail', kwargs={'pk': self.kwargs['pk']})
 
 
-class CategoryViewset(viewsets.ModelViewSet):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
-
-
+# IsAdminUser - для админов ,IsAuthenticated - для авторизованных, AllowAny - открытый доступ.
 class PostNewsViewest(viewsets.ModelViewSet):
     queryset = Post.objects.filter(post_type='NE')
     serializer_class = PostSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.validated_data['author'] = request.user.author
+        self.perform_create(serializer)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 class PostArticleViewset(viewsets.ModelViewSet):
     queryset = Post.objects.filter(post_type='AR')
     serializer_class = PostSerializer
-
-
-class CommentViewset(viewsets.ModelViewSet):
-    queryset = Comment.objects.all()
-    serializer_class = CommentSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 

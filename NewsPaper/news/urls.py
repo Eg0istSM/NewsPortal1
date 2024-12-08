@@ -1,15 +1,6 @@
 from django.urls import path
 from .views import *
 from django.views.decorators.cache import cache_page
-from rest_framework import routers
-from news import views
-
-
-router = routers.DefaultRouter()
-router.register(r'category', views.CategoryViewset)
-router.register(r'news', views.PostNewsViewest)
-router.register(r'article', views.PostArticleViewset)
-router.register(r'comment', views.CommentViewset)
 
 
 urlpatterns = [
